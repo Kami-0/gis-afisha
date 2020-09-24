@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>ru.kami.gis.afisha</groupId>
+    <artifactId>gis-afisha</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.2.6.RELEASE</version>
+    </parent>
+
+    <modules>
+        <module>commons/commons-feign</module>
+        <module>commons</module>
+        <module>afisha-schedule</module>
+        <module>afisha-order</module>
+        <module>composite-be</module>
+    </modules>
+
+    <properties>
+        <lombok.version>1.18.4</lombok.version>
+        <liquibase-core.version>3.8.8</liquibase-core.version>
+        <junit.version>4.12</junit.version>
+        <junit-jupiter-api.version>5.5.2</junit-jupiter-api.version>
+        <log4j-to-slf4j.version>2.12.1</log4j-to-slf4j.version>
+        <gson.version>2.8.6</gson.version>
+        <feign-gson.version>11.0</feign-gson.version>
+        <feign-slf4j.version>11.0</feign-slf4j.version>
+        <feign-core.version>11.0</feign-core.version>
+        <feign-jackson.version>11.0</feign-jackson.version>
+        <validation-api.version>2.0.1.Final</validation-api.version>
+        <javax.annotation-api.version>1.3.2</javax.annotation-api.version>
+        <spring-boot-starter-data-jpa.version>2.2.8.RELEASE</spring-boot-starter-data-jpa.version>
+    </properties>
+</project>

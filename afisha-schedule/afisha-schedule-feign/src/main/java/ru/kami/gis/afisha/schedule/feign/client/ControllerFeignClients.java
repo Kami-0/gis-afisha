@@ -1,0 +1,26 @@
+package ru.kami.gis.afisha.schedule.feign.client;
+
+import lombok.Getter;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import ru.kami.gis.afisha.commons.FeignClientBuilder;
+import ru.kami.gis.afisha.schedule.feign.ScheduleApiFeign;
+
+/**
+ * @author Daniil.Makarov
+ */
+@Getter
+@Configuration
+public class ControllerFeignClients {
+
+    @Value("${schedule.server.uri}")
+    private String uri;
+
+    @Bean
+    public ScheduleApiFeign dictionaryClient() {
+        return FeignClientBuilder.createClient(ScheduleApiFeign.class, uri);
+    }
+
+}
+
