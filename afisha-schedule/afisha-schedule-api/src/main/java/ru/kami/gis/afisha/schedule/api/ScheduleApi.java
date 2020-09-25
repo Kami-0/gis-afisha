@@ -13,6 +13,13 @@ import java.util.List;
  */
 public interface ScheduleApi {
     /**
+     * Получить список всех кинотеатров
+     *
+     * @return список кинотеатров
+     */
+    List<CinemaDto> getAllCinemas();
+
+    /**
      * Получить событие по его индетификатору
      *
      * @param id события

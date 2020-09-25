@@ -26,6 +26,18 @@ public class ScheduleController implements ScheduleApi {
     private ScheduleService scheduleService;
 
     @Override
+    @GetMapping(value = "/cinemas")
+    public List<CinemaDto> getAllCinemas() {
+        return scheduleService.getAllCinemas();
+    }
+
+    @Override
+    @GetMapping(value = "/cinema/{id}/halls")
+    public List<CinemaHallDto> getAllCinemaHallsById(@PathVariable long id) {
+        return scheduleService.getAllCinemaHallsById(id);
+    }
+
+    @Override
     @GetMapping(value = "/event/{id}")
     public EventDto getEventById(@PathVariable long id) {
         return scheduleService.getEventById(id);
@@ -35,11 +47,5 @@ public class ScheduleController implements ScheduleApi {
     @GetMapping(value = "/event/{id}/cinemas")
     public List<CinemaDto> getAllEventCinemasById(@PathVariable long id) {
         return scheduleService.getAllEventCinemasById(id);
-    }
-
-    @Override
-    @GetMapping(value = "/cinema/{id}/halls")
-    public List<CinemaHallDto> getAllCinemaHallsById(@PathVariable long id) {
-        return scheduleService.getAllCinemaHallsById(id);
     }
 }
