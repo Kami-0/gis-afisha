@@ -5,5 +5,9 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
     <include file="/db/changelog/changes/create-cinemas-table.xml"/>
+    <include file="/db/changelog/changes/create-cinema-halls-table.xml"/>
+    <include file="/db/changelog/changes/create-events-table.xml"/>
+    <include file="/db/changelog/changes/create-place-table.xml"/>
+    <include file="/db/changelog/changes/insert-place-table.xml"/>
 
 </databaseChangeLog>

@@ -20,18 +20,18 @@ public class PlaceDto {
     @NotNull
     private Long id;
     /**
+     * Номер ряда в зале
+     */
+    @NotNull
+    private Long row;
+    /**
      * Номер места в зале
      */
     @NotNull
-    private Long number;
+    private Long place;
     /**
-     * Стоимость места в рублях
+     * Индитификатор зала которому принадлежит место
      */
     @NotNull
-    private Double price;
-    /**
-     * Статус свободно/занято
-     */
-    @NotNull
-    private Boolean isFree;
+    private Long hallId;
 }

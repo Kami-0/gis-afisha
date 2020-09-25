@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="3" author="Daniil.Makarov">
+
+        <createTable tableName="events">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="hall_id" type="bigint">
+                <constraints nullable="false"
+                             foreignKeyName="fk_event_hall"
+                             references="halls(id)"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="age_restriction" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="duration" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <insert tableName="events">
+            <column name="hall_id">1</column>
+            <column name="name">Avatar</column>
+            <column name="age_restriction">12</column>
+            <column name="duration">180</column>
+        </insert>
+        <insert tableName="events">
+            <column name="hall_id">3</column>
+            <column name="name">John Wick</column>
+            <column name="age_restriction">18</column>
+            <column name="duration">135</column>
+        </insert>
+        <insert tableName="events">
+            <column name="hall_id">4</column>
+            <column name="name">1917</column>
+            <column name="age_restriction">16</column>
+            <column name="duration">120</column>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

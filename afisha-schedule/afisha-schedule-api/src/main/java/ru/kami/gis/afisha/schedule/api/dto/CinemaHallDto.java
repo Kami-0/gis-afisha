@@ -3,7 +3,6 @@ package ru.kami.gis.afisha.schedule.api.dto;
 import lombok.*;
 
 import javax.validation.constraints.NotNull;
-import java.util.List;
 
 /**
  * @author Daniil.Makarov
@@ -30,4 +29,9 @@ public class CinemaHallDto {
      */
     @NotNull
     private Long placesNumber;
+    /**
+     * Индитификатор кинотеатра
+     */
+    @NotNull
+    private Long cinemaId;
 }

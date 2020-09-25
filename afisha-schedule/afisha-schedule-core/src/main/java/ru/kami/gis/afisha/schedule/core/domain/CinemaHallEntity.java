@@ -12,7 +12,9 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class CinemaEntity {
+public class CinemaHallEntity {
     private Long id;
-    private String name;
+    private Long number;
+    private Long placesNumber;
+    private Long cinemaId;
 }

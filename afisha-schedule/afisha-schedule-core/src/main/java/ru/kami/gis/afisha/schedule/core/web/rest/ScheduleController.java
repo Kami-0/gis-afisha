@@ -25,24 +25,47 @@ public class ScheduleController implements ScheduleApi {
     @Autowired
     private ScheduleService scheduleService;
 
+    /**
+     * Получить список всех кинотеатров
+     *
+     * @return список кинотеатров
+     */
     @Override
     @GetMapping(value = "/cinemas")
     public List<CinemaDto> getAllCinemas() {
         return scheduleService.getAllCinemas();
     }
 
+    /**
+     * Получить все залы кинотеатра по его индетификатору
+     *
+     * @param id кинотетра
+     * @return список всех залов кинотеатра
+     */
     @Override
     @GetMapping(value = "/cinema/{id}/halls")
     public List<CinemaHallDto> getAllCinemaHallsById(@PathVariable long id) {
         return scheduleService.getAllCinemaHallsById(id);
     }
 
+    /**
+     * Получить событие по его индетификатору
+     *
+     * @param id события
+     * @return событие
+     */
     @Override
     @GetMapping(value = "/event/{id}")
     public EventDto getEventById(@PathVariable long id) {
         return scheduleService.getEventById(id);
     }
 
+    /**
+     * Получить все кинотеатры где проходит событие по индетификатору
+     *
+     * @param id события
+     * @return список кинотеатров в которых проходит событие
+     */
     @Override
     @GetMapping(value = "/event/{id}/cinemas")
     public List<CinemaDto> getAllEventCinemasById(@PathVariable long id) {

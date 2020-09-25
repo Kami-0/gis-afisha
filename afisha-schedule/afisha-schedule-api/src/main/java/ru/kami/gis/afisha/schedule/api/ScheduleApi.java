@@ -20,6 +20,14 @@ public interface ScheduleApi {
     List<CinemaDto> getAllCinemas();
 
     /**
+     * Получить все залы кинотеатра по его индетификатору
+     *
+     * @param id кинотетра
+     * @return список всех залов кинотеатра
+     */
+    List<CinemaHallDto> getAllCinemaHallsById(@Min(value = ApiConstants.ID_MIN, message = ApiConstants.MESSAGE_TO_NOT_VALID_ID) long id);
+
+    /**
      * Получить событие по его индетификатору
      *
      * @param id события
@@ -34,13 +42,5 @@ public interface ScheduleApi {
      * @return список кинотеатров в которых проходит событие
      */
     List<CinemaDto> getAllEventCinemasById(@Min(value = ApiConstants.ID_MIN, message = ApiConstants.MESSAGE_TO_NOT_VALID_ID) long id);
-
-    /**
-     * Получить все залы кинотеатра по его индетификатору
-     *
-     * @param id кинотетра
-     * @return список всех залов кинотеатра
-     */
-    List<CinemaHallDto> getAllCinemaHallsById(@Min(value = ApiConstants.ID_MIN, message = ApiConstants.MESSAGE_TO_NOT_VALID_ID) long id);
 
 }

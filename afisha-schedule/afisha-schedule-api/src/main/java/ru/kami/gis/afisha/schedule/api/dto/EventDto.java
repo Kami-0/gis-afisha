@@ -20,10 +20,15 @@ public class EventDto {
     @NotNull
     private Long id;
     /**
+     * Индитификатор зала в котором произойдет событие
+     */
+    @NotNull
+    private Long hallId;
+    /**
      * Название события
      */
     @NotNull
-    private Long name;
+    private String name;
     /**
      * Возрастное ограничение события
      */

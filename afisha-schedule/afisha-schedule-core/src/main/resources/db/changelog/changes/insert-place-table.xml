@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="5" author="Daniil.Makarov">
+
+        <!--Заполнение зала с id = 1-->
+        <insert tableName="places">
+            <column name="row">1</column>
+            <column name="place">1</column>
+            <column name="hall_id">1</column>
+        </insert>
+        <insert tableName="places">
+            <column name="row">1</column>
+            <column name="place">2</column>
+            <column name="hall_id">1</column>
+        </insert>
+        <insert tableName="places">
+            <column name="row">1</column>
+            <column name="place">3</column>
+            <column name="hall_id">1</column>
+        </insert>
+        <insert tableName="places">
+            <column name="row">1</column>
+            <column name="place">4</column>
+            <column name="hall_id">1</column>
+        </insert>
+        <insert tableName="places">
+            <column name="row">2</column>
+            <column name="place">1</column>
+            <column name="hall_id">1</column>
+        </insert>
+        <insert tableName="places">
+            <column name="row">2</column>
+            <column name="place">2</column>
+            <column name="hall_id">1</column>
+        </insert>
+        <insert tableName="places">
+            <column name="row">2</column>
+            <column name="place">3</column>
+            <column name="hall_id">1</column>
+        </insert>
+        <insert tableName="places">
+            <column name="row">2</column>
+            <column name="place">4</column>
+            <column name="hall_id">1</column>
+        </insert>
+        <insert tableName="places">
+            <column name="row">3</column>
+            <column name="place">1</column>
+            <column name="hall_id">1</column>
+        </insert>
+        <insert tableName="places">
+            <column name="row">3</column>
+            <column name="place">2</column>
+            <column name="hall_id">1</column>
+        </insert>
+        <insert tableName="places">
+            <column name="row">3</column>
+            <column name="place">3</column>
+            <column name="hall_id">1</column>
+        </insert>
+        <insert tableName="places">
+            <column name="row">3</column>
+            <column name="place">4</column>
+            <column name="hall_id">1</column>
+        </insert>
+
+
+        <!--Заполнение зала с id = 2-->
+        <insert tableName="places">
+            <column name="row">1</column>
+            <column name="place">1</column>
+            <column name="hall_id">2</column>
+        </insert>
+        <insert tableName="places">
+            <column name="row">1</column>
+            <column name="place">2</column>
+            <column name="hall_id">2</column>
+        </insert>
+        <insert tableName="places">
+            <column name="row">1</column>
+            <column name="place">3</column>
+            <column name="hall_id">2</column>
+        </insert>
+        <insert tableName="places">
+            <column name="row">1</column>
+            <column name="place">4</column>
+            <column name="hall_id">2</column>
+        </insert>
+        <insert tableName="places">
+            <column name="row">2</column>
+            <column name="place">1</column>
+            <column name="hall_id">2</column>
+        </insert>
+        <insert tableName="places">
+            <column name="row">2</column>
+            <column name="place">2</column>
+            <column name="hall_id">2</column>
+        </insert>
+        <insert tableName="places">
+            <column name="row">2</column>
+            <column name="place">3</column>
+            <column name="hall_id">2</column>
+        </insert>
+        <insert tableName="places">
+            <column name="row">2</column>
+            <column name="place">4</column>
+            <column name="hall_id">2</column>
+        </insert>
+        <insert tableName="places">
+            <column name="row">3</column>
+            <column name="place">1</column>
+            <column name="hall_id">2</column>
+        </insert>
+        <insert tableName="places">
+            <column name="row">3</column>
+            <column name="place">2</column>
+            <column name="hall_id">2</column>
+        </insert>
+        <insert tableName="places">
+            <column name="row">3</column>
+            <column name="place">3</column>
+            <column name="hall_id">2</column>
+        </insert>
+        <insert tableName="places">
+            <column name="row">3</column>
+            <column name="place">4</column>
+            <column name="hall_id">2</column>
+        </insert>
+        <insert tableName="places">
+            <column name="row">4</column>
+            <column name="place">1</column>
+            <column name="hall_id">2</column>
+        </insert>
+        <insert tableName="places">
+            <column name="row">4</column>
+            <column name="place">2</column>
+            <column name="hall_id">2</column>
+        </insert>
+        <insert tableName="places">
+            <column name="row">4</column>
+            <column name="place">3</column>
+            <column name="hall_id">2</column>
+        </insert>
+
+        <!--Заполнение зала с id = 3-->
+        <insert tableName="places">
+            <column name="row">1</column>
+            <column name="place">1</column>
+            <column name="hall_id">3</column>
+        </insert>
+        <insert tableName="places">
+            <column name="row">1</column>
+            <column name="place">2</column>
+            <column name="hall_id">3</column>
+        </insert>
+        <insert tableName="places">
+            <column name="row">1</column>
+            <column name="place">3</column>
+            <column name="hall_id">3</column>
+        </insert>
+        <insert tableName="places">
+            <column name="row">1</column>
+            <column name="place">4</column>
+            <column name="hall_id">3</column>
+        </insert>
+        <insert tableName="places">
+            <column name="row">2</column>
+            <column name="place">1</column>
+            <column name="hall_id">3</column>
+        </insert>
+        <insert tableName="places">
+            <column name="row">2</column>
+            <column name="place">2</column>
+            <column name="hall_id">3</column>
+        </insert>
+        <insert tableName="places">
+            <column name="row">2</column>
+            <column name="place">3</column>
+            <column name="hall_id">3</column>
+        </insert>
+        <insert tableName="places">
+            <column name="row">2</column>
+            <column name="place">4</column>
+            <column name="hall_id">3</column>
+        </insert>
+        <insert tableName="places">
+            <column name="row">3</column>
+            <column name="place">1</column>
+            <column name="hall_id">3</column>
+        </insert>
+        <insert tableName="places">
+            <column name="row">3</column>
+            <column name="place">2</column>
+            <column name="hall_id">3</column>
+        </insert>
+
+        <!--Заполнение зала с id = 4-->
+        <insert tableName="places">
+            <column name="row">1</column>
+            <column name="place">1</column>
+            <column name="hall_id">4</column>
+        </insert>
+        <insert tableName="places">
+            <column name="row">1</column>
+            <column name="place">2</column>
+            <column name="hall_id">4</column>
+        </insert>
+        <insert tableName="places">
+            <column name="row">1</column>
+            <column name="place">3</column>
+            <column name="hall_id">4</column>
+        </insert>
+        <insert tableName="places">
+            <column name="row">1</column>
+            <column name="place">4</column>
+            <column name="hall_id">4</column>
+        </insert>
+        <insert tableName="places">
+            <column name="row">2</column>
+            <column name="place">1</column>
+            <column name="hall_id">4</column>
+        </insert>
+        <insert tableName="places">
+            <column name="row">2</column>
+            <column name="place">2</column>
+            <column name="hall_id">4</column>
+        </insert>
+        <insert tableName="places">
+            <column name="row">2</column>
+            <column name="place">3</column>
+            <column name="hall_id">4</column>
+        </insert>
+        <insert tableName="places">
+            <column name="row">2</column>
+            <column name="place">4</column>
+            <column name="hall_id">4</column>
+        </insert>
+        <insert tableName="places">
+            <column name="row">3</column>
+            <column name="place">1</column>
+            <column name="hall_id">4</column>
+        </insert>
+        <insert tableName="places">
+            <column name="row">3</column>
+            <column name="place">2</column>
+            <column name="hall_id">4</column>
+        </insert>
+        <insert tableName="places">
+            <column name="row">3</column>
+            <column name="place">3</column>
+            <column name="hall_id">4</column>
+        </insert>
+        <insert tableName="places">
+            <column name="row">3</column>
+            <column name="place">4</column>
+            <column name="hall_id">4</column>
+        </insert>
+        <insert tableName="places">
+            <column name="row">4</column>
+            <column name="place">1</column>
+            <column name="hall_id">4</column>
+        </insert>
+        <insert tableName="places">
+            <column name="row">4</column>
+            <column name="place">2</column>
+            <column name="hall_id">4</column>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
