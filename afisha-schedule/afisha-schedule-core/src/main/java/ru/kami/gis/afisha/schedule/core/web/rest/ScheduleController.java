@@ -10,6 +10,7 @@ import ru.kami.gis.afisha.schedule.api.ScheduleApi;
 import ru.kami.gis.afisha.schedule.api.dto.CinemaDto;
 import ru.kami.gis.afisha.schedule.api.dto.CinemaHallDto;
 import ru.kami.gis.afisha.schedule.api.dto.EventDto;
+import ru.kami.gis.afisha.schedule.api.dto.PlaceDto;
 import ru.kami.gis.afisha.schedule.core.service.ScheduleService;
 
 import java.util.List;
@@ -70,5 +71,17 @@ public class ScheduleController implements ScheduleApi {
     @GetMapping(value = "/event/{id}/cinemas")
     public List<CinemaDto> getAllEventCinemasById(@PathVariable long id) {
         return scheduleService.getAllEventCinemasById(id);
+    }
+
+    /**
+     * Получить список мест в зале со статусами свободно/забронировано по id события
+     *
+     * @param id события
+     * @return список мест
+     */
+    @Override
+    @GetMapping(value = "/event/{id}/places")
+    public List<PlaceDto> getAllPlacesByIdEvent(@PathVariable long id) {
+        return scheduleService.getAllPlacesByIdEvent(id);
     }
 }

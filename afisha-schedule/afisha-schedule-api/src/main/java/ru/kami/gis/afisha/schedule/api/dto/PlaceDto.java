@@ -34,4 +34,8 @@ public class PlaceDto {
      */
     @NotNull
     private Long hallId;
+    /**
+     * Свободно/забронированно место
+     */
+    private Boolean isFree;
 }

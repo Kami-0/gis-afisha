@@ -4,6 +4,7 @@ import ru.kami.gis.afisha.schedule.api.constant.ApiConstants;
 import ru.kami.gis.afisha.schedule.api.dto.CinemaDto;
 import ru.kami.gis.afisha.schedule.api.dto.CinemaHallDto;
 import ru.kami.gis.afisha.schedule.api.dto.EventDto;
+import ru.kami.gis.afisha.schedule.api.dto.PlaceDto;
 
 import javax.validation.constraints.Min;
 import java.util.List;
@@ -42,5 +43,13 @@ public interface ScheduleApi {
      * @return список кинотеатров в которых проходит событие
      */
     List<CinemaDto> getAllEventCinemasById(@Min(value = ApiConstants.ID_MIN, message = ApiConstants.MESSAGE_TO_NOT_VALID_ID) long id);
+
+    /**
+     * Получить список мест в зале со статусами свободно/забронировано по id события
+     *
+     * @param id события
+     * @return список мест
+     */
+    List<PlaceDto> getAllPlacesByIdEvent(@Min(value = ApiConstants.ID_MIN, message = ApiConstants.MESSAGE_TO_NOT_VALID_ID) long id);
 
 }
