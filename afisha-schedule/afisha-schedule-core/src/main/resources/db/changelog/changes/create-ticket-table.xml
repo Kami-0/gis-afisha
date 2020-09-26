@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="3" author="Daniil.Makarov">
+
+        <createTable tableName="tickets">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="event_id" type="bigint">
+                <constraints nullable="false"
+                             foreignKeyName="fk_event_ticket"
+                             references="events(id)"/>
+            </column>
+            <column name="place_id" type="bigint">
+                <constraints nullable="false"
+                             foreignKeyName="fk_place_ticket"
+                             references="places(id)"/>
+            </column>
+            <column name="is_acts" type="boolean">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <insert tableName="tickets">
+            <column name="event_id">1</column>
+            <column name="place_id">10</column>
+            <column name="is_acts">true</column>
+        </insert>
+        <insert tableName="tickets">
+            <column name="event_id">1</column>
+            <column name="place_id">11</column>
+            <column name="is_acts">true</column>
+        </insert>
+        <insert tableName="tickets">
+            <column name="event_id">1</column>
+            <column name="place_id">8</column>
+            <column name="is_acts">false</column>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

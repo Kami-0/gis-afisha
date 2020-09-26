@@ -9,5 +9,6 @@
     <include file="/db/changelog/changes/create-events-table.xml"/>
     <include file="/db/changelog/changes/create-place-table.xml"/>
     <include file="/db/changelog/changes/insert-place-table.xml"/>
+    <include file="/db/changelog/changes/create-ticket-table.xml"/>
 
 </databaseChangeLog>
