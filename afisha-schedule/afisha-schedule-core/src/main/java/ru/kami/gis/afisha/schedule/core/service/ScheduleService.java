@@ -72,17 +72,14 @@ public class ScheduleService {
                 .filter(TicketEntity::getIsActs)
                 .map(TicketEntity::getPlaceId)
                 .collect(Collectors.toList());
-        occupiedPlacesId.forEach(System.out::println);
 
         return allHallPlaces
                 .stream()
                 .map(DtoToEntityConverter::convert)
                 .peek(it -> {
-                    System.out.println(it);
                     if (containIdInList(it.getId(), occupiedPlacesId)) {
                         it.setIsFree(false);
                     }
-                    System.out.println(it + "\n ________ \n");
                 })
                 .collect(Collectors.toList());
     }
