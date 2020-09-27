@@ -4,7 +4,7 @@ import ru.kami.gis.afisha.schedule.api.constant.ApiConstants;
 import ru.kami.gis.afisha.schedule.api.dto.CinemaDto;
 import ru.kami.gis.afisha.schedule.api.dto.CinemaHallDto;
 import ru.kami.gis.afisha.schedule.api.dto.EventDto;
-import ru.kami.gis.afisha.schedule.api.dto.PlaceDto;
+import ru.kami.gis.afisha.schedule.api.dto.PlaceInfoDto;
 
 import javax.validation.constraints.Min;
 import java.util.List;
@@ -50,6 +50,6 @@ public interface ScheduleApi {
      * @param id события
      * @return список мест
      */
-    List<PlaceDto> getAllPlacesByIdEvent(@Min(value = ApiConstants.ID_MIN, message = ApiConstants.MESSAGE_TO_NOT_VALID_ID) long id);
+    List<PlaceInfoDto> getAllPlacesByIdEvent(@Min(value = ApiConstants.ID_MIN, message = ApiConstants.MESSAGE_TO_NOT_VALID_ID) long id);
 
 }

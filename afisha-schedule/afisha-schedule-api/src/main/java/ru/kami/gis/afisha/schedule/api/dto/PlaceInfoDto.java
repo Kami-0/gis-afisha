@@ -13,7 +13,7 @@ import javax.validation.constraints.NotNull;
 @ToString
 @Builder
 @EqualsAndHashCode
-public class PlaceDto {
+public class PlaceInfoDto {
     /**
      * Индитификатор места в базе данных
      */
@@ -34,4 +34,9 @@ public class PlaceDto {
      */
     @NotNull
     private Long hallId;
+    /**
+     * Свободно/забронированно место
+     */
+    @NotNull
+    private Boolean isFree;
 }

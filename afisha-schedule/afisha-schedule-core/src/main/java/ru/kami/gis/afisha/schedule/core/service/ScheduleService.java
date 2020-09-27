@@ -6,13 +6,10 @@ import org.springframework.transaction.annotation.Transactional;
 import ru.kami.gis.afisha.schedule.api.dto.CinemaDto;
 import ru.kami.gis.afisha.schedule.api.dto.CinemaHallDto;
 import ru.kami.gis.afisha.schedule.api.dto.EventDto;
-import ru.kami.gis.afisha.schedule.api.dto.PlaceDto;
-import ru.kami.gis.afisha.schedule.core.domain.EventEntity;
+import ru.kami.gis.afisha.schedule.api.dto.PlaceInfoDto;
 import ru.kami.gis.afisha.schedule.core.domain.PlaceEntity;
-import ru.kami.gis.afisha.schedule.core.repository.jdbc.CinemaDaoImpl;
-import ru.kami.gis.afisha.schedule.core.repository.jdbc.CinemaHallDaoImpl;
-import ru.kami.gis.afisha.schedule.core.repository.jdbc.EventDaoImpl;
-import ru.kami.gis.afisha.schedule.core.repository.jdbc.PlaceDaoImpl;
+import ru.kami.gis.afisha.schedule.core.domain.TicketEntity;
+import ru.kami.gis.afisha.schedule.core.repository.jdbc.api.*;
 import ru.kami.gis.afisha.schedule.core.utils.DtoToEntityConverter;
 
 import java.util.List;
@@ -25,13 +22,15 @@ import java.util.stream.Collectors;
 public class ScheduleService {
 
     @Autowired
-    private CinemaDaoImpl cinemaDao;
+    private CinemaDao cinemaDao;
     @Autowired
-    private CinemaHallDaoImpl cinemaHallDao;
+    private CinemaHallDao cinemaHallDao;
     @Autowired
-    private EventDaoImpl eventDao;
+    private EventDao eventDao;
     @Autowired
-    private PlaceDaoImpl placeDao;
+    private PlaceDao placeDao;
+    @Autowired
+    private TicketDao ticketDao;
 
     @Transactional
     public List<CinemaDto> getAllCinemas() {
@@ -58,14 +57,37 @@ public class ScheduleService {
 
     @Transactional
     public List<CinemaDto> getAllEventCinemasById(long id) {
+        //todo реализовать
         return null;
     }
 
     @Transactional
-    public List<PlaceDto> getAllPlacesByIdEvent(long id) {
-        EventEntity eventById = eventDao.findEventById(id);
-        List<PlaceEntity> allPlacesByIdHall = placeDao.findAllPlacesByIdHall(eventById.getHallId());
+    public List<PlaceInfoDto> getAllPlacesByIdEvent(long eventId) {
+        long hallId = eventDao.findEventById(eventId).getHallId();
+        List<PlaceEntity> allHallPlaces = placeDao.findAllPlacesByIdHall(hallId);
+        List<TicketEntity> tickets = ticketDao.findAllTicketsByIdEvent(eventId);
 
-        return null;
+        List<Long> occupiedPlacesId = tickets
+                .stream()
+                .filter(TicketEntity::getIsActs)
+                .map(TicketEntity::getPlaceId)
+                .collect(Collectors.toList());
+        occupiedPlacesId.forEach(System.out::println);
+
+        return allHallPlaces
+                .stream()
+                .map(DtoToEntityConverter::convert)
+                .peek(it -> {
+                    System.out.println(it);
+                    if (containIdInList(it.getId(), occupiedPlacesId)) {
+                        it.setIsFree(false);
+                    }
+                    System.out.println(it + "\n ________ \n");
+                })
+                .collect(Collectors.toList());
+    }
+
+    private boolean containIdInList(Long id, List<Long> listId) {
+        return listId.stream().anyMatch(it -> it.equals(id));
     }
 }

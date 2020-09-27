@@ -10,7 +10,7 @@ import ru.kami.gis.afisha.schedule.api.ScheduleApi;
 import ru.kami.gis.afisha.schedule.api.dto.CinemaDto;
 import ru.kami.gis.afisha.schedule.api.dto.CinemaHallDto;
 import ru.kami.gis.afisha.schedule.api.dto.EventDto;
-import ru.kami.gis.afisha.schedule.api.dto.PlaceDto;
+import ru.kami.gis.afisha.schedule.api.dto.PlaceInfoDto;
 import ru.kami.gis.afisha.schedule.core.service.ScheduleService;
 
 import java.util.List;
@@ -81,7 +81,7 @@ public class ScheduleController implements ScheduleApi {
      */
     @Override
     @GetMapping(value = "/event/{id}/places")
-    public List<PlaceDto> getAllPlacesByIdEvent(@PathVariable long id) {
+    public List<PlaceInfoDto> getAllPlacesByIdEvent(@PathVariable long id) {
         return scheduleService.getAllPlacesByIdEvent(id);
     }
 }
