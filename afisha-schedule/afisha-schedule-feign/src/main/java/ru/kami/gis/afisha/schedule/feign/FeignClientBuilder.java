@@ -1,10 +1,10 @@
-package ru.kami.gis.afisha.commons;
+package ru.kami.gis.afisha.schedule.feign;
 
 import feign.Feign;
 import feign.Logger;
+import feign.gson.GsonDecoder;
 import feign.gson.GsonEncoder;
 import feign.slf4j.Slf4jLogger;
-import ru.kami.gis.afisha.commons.decoders.InstantGsonDecoder;
 
 /**
  * @author Daniil.Makarov
@@ -15,7 +15,7 @@ public final class FeignClientBuilder {
                 .logger(new Slf4jLogger())
                 .logLevel(Logger.Level.FULL)
                 .encoder(new GsonEncoder())
-                .decoder(new InstantGsonDecoder())
+                .decoder(new GsonDecoder())
                 .target(type, uri);
     }
 }

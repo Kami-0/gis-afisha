@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  ru.kami.gis.afisha.schedule.feign.client.ControllerFeignClients
