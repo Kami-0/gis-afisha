@@ -22,15 +22,12 @@ public interface ScheduleApiFeign extends ScheduleApi {
     @RequestLine("GET /schedule/event/{id}")
     EventDto getEventById(@Min(value = ID_MIN, message = MESSAGE_TO_NOT_VALID_ID) @Param("id") long id);
 
-    @RequestLine("GET /schedule/event/{id}/cinemas")
-    List<CinemaDto> getAllEventCinemasById(@Min(value = ID_MIN, message = MESSAGE_TO_NOT_VALID_ID) @Param("id") long id);
+    @RequestLine("GET /schedule/event/{id}/places")
+    List<PlaceInfoDto> getAllPlacesByIdEvent(@Min(value = ID_MIN, message = MESSAGE_TO_NOT_VALID_ID) @Param("id") long id);
+
+    @RequestLine("GET /schedule/cinemas")
+    List<CinemaDto> getAllCinemas();
 
     @RequestLine("GET /schedule/cinema/{id}/halls")
     List<CinemaHallDto> getAllCinemaHallsById(@Min(value = ID_MIN, message = MESSAGE_TO_NOT_VALID_ID) @Param("id") long id);
-
-    @RequestLine("GET /schedule/event/{id}/cinemas")
-    List<CinemaDto> getAllCinemas();
-
-    @RequestLine("GET /schedule/event/{id}/places")
-    List<PlaceInfoDto> getAllPlacesByIdEvent(@Min(value = ID_MIN, message = MESSAGE_TO_NOT_VALID_ID) @Param("id") long id);
 }

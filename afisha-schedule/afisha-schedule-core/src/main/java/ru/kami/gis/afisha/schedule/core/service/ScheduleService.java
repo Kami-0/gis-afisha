@@ -56,12 +56,6 @@ public class ScheduleService {
     }
 
     @Transactional
-    public List<CinemaDto> getAllEventCinemasById(long id) {
-        //todo реализовать
-        return null;
-    }
-
-    @Transactional
     public List<PlaceInfoDto> getAllPlacesByIdEvent(long eventId) {
         long hallId = eventDao.findEventById(eventId).getHallId();
         List<PlaceEntity> allHallPlaces = placeDao.findAllPlacesByIdHall(hallId);

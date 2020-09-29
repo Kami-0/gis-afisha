@@ -37,14 +37,6 @@ public interface ScheduleApi {
     EventDto getEventById(@Min(value = ApiConstants.ID_MIN, message = ApiConstants.MESSAGE_TO_NOT_VALID_ID) long id);
 
     /**
-     * Получить все кинотеатры где проходит событие по индетификатору
-     *
-     * @param id события
-     * @return список кинотеатров в которых проходит событие
-     */
-    List<CinemaDto> getAllEventCinemasById(@Min(value = ApiConstants.ID_MIN, message = ApiConstants.MESSAGE_TO_NOT_VALID_ID) long id);
-
-    /**
      * Получить список мест в зале со статусами свободно/забронировано по id события
      *
      * @param id события

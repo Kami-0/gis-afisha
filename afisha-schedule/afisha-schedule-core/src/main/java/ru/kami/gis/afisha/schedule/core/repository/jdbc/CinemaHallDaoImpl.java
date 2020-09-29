@@ -20,7 +20,7 @@ public class CinemaHallDaoImpl implements CinemaHallDao {
     @Override
     public List<CinemaHallEntity> findAllByIdCinema(Long id) {
         return jdbcTemplate.query(
-                "select * from public.halls where cinema_id = $id",
+                "select * from public.halls where cinema_id = " + id,
                 new BeanPropertyRowMapper<>(CinemaHallEntity.class)
         );
     }

@@ -62,18 +62,6 @@ public class ScheduleController implements ScheduleApi {
     }
 
     /**
-     * Получить все кинотеатры где проходит событие по индетификатору
-     *
-     * @param id события
-     * @return список кинотеатров в которых проходит событие
-     */
-    @Override
-    @GetMapping(value = "/event/{id}/cinemas")
-    public List<CinemaDto> getAllEventCinemasById(@PathVariable long id) {
-        return scheduleService.getAllEventCinemasById(id);
-    }
-
-    /**
      * Получить список мест в зале со статусами свободно/забронировано по id события
      *
      * @param id события
