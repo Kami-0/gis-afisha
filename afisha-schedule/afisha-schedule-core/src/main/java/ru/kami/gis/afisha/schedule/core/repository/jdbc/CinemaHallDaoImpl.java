@@ -8,6 +8,7 @@ import ru.kami.gis.afisha.schedule.core.domain.CinemaHallEntity;
 import ru.kami.gis.afisha.schedule.core.repository.jdbc.api.CinemaHallDao;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author Daniil.Makarov
@@ -18,11 +19,12 @@ public class CinemaHallDaoImpl implements CinemaHallDao {
     private JdbcTemplate jdbcTemplate;
 
     @Override
-    public List<CinemaHallEntity> findAllByIdCinema(Long id) {
-        return jdbcTemplate.query(
+    public Optional<List<CinemaHallEntity>> findAllByIdCinema(Long id) {
+        List<CinemaHallEntity> query = jdbcTemplate.query(
                 "select * from public.halls where cinema_id = " + id,
                 new BeanPropertyRowMapper<>(CinemaHallEntity.class)
         );
+        return query.isEmpty() ? Optional.empty() : Optional.of(query);
     }
 }
 

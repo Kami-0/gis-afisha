@@ -3,6 +3,7 @@ package ru.kami.gis.afisha.schedule.api.dto;
 import lombok.*;
 
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 /**
  * @author Daniil.Makarov
@@ -13,25 +14,16 @@ import javax.validation.constraints.NotNull;
 @ToString
 @Builder
 @EqualsAndHashCode
-public class TicketDto {
+public class PlacesOrderRequestDto {
     /**
-     * Индитификатор билета
-     */
-    @NotNull
-    private Long id;
-    /**
-     * Индитификатор события
+     * Индитификатор ивента
      */
     @NotNull
     private Long eventId;
+
     /**
      * Индитификатор места
      */
     @NotNull
-    private Long placeId;
-    /**
-     * Флаг валидности билета
-     */
-    @NotNull
-    private Boolean isActs;
+    private List<Long> placesId;
 }

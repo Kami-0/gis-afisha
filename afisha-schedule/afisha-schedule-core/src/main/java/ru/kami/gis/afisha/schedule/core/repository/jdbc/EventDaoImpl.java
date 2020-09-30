@@ -7,6 +7,8 @@ import org.springframework.stereotype.Repository;
 import ru.kami.gis.afisha.schedule.core.domain.EventEntity;
 import ru.kami.gis.afisha.schedule.core.repository.jdbc.api.EventDao;
 
+import java.util.Optional;
+
 /**
  * @author Daniil.Makarov
  */
@@ -17,10 +19,10 @@ public class EventDaoImpl implements EventDao {
     private JdbcTemplate jdbcTemplate;
 
     @Override
-    public EventEntity findEventById(Long id) {
-        return jdbcTemplate.query(
+    public Optional<EventEntity> findEventById(Long id) {
+        return Optional.ofNullable(jdbcTemplate.query(
                 "select * from public.events where id = " + id,
                 new BeanPropertyRowMapper<>(EventEntity.class)
-        ).get(FIRST_INDEX);
+        ).get(FIRST_INDEX));
     }
 }

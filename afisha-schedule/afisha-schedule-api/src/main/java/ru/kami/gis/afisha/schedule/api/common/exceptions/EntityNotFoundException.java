@@ -1,7 +1,7 @@
 package ru.kami.gis.afisha.schedule.api.common.exceptions;
 
-import ru.kami.gis.afisha.schedule.api.common.types.EntityType;
 import lombok.Getter;
+import ru.kami.gis.afisha.schedule.api.common.types.EntityType;
 
 /**
  * @author Daniil.Makarov

@@ -24,4 +24,14 @@ public class TicketDaoImpl implements TicketDao {
                 new BeanPropertyRowMapper<>(TicketEntity.class)
         );
     }
+
+    @Override
+    public int insert(TicketEntity ticketEntity) {
+        return jdbcTemplate.update("insert into public.tickets " +
+                        "(event_id, place_id, is_acts) " +
+                        "values (?,?,?)",
+                ticketEntity.getEventId(),
+                ticketEntity.getPlaceId(),
+                ticketEntity.isActs());
+    }
 }

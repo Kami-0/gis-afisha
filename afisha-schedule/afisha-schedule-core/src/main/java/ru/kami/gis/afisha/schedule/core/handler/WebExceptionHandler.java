@@ -14,6 +14,7 @@ import org.springframework.web.method.annotation.MethodArgumentTypeMismatchExcep
 import org.springframework.web.servlet.NoHandlerFoundException;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 import ru.kami.gis.afisha.schedule.api.common.exceptions.EntityNotFoundException;
+import ru.kami.gis.afisha.schedule.api.common.exceptions.InvalidTicketRequestException;
 import ru.kami.gis.afisha.schedule.api.common.types.EntityType;
 
 import javax.validation.ConstraintViolationException;
@@ -48,10 +49,22 @@ public class WebExceptionHandler extends ResponseEntityExceptionHandler {
      * При невалидном id
      */
     @ExceptionHandler(EntityNotFoundException.class)
-    protected ResponseEntity<ExceptionResponseEntity> handleNotFoundException(EntityNotFoundException ex) {
+    protected ResponseEntity<ExceptionResponseEntity> handleEntityNotFoundException(EntityNotFoundException ex) {
         return new ResponseEntity<>(
                 new ExceptionResponseEntity(HttpStatus.NOT_FOUND.value(),
                         ex.getEntityType(),
+                        ex.getMessage()),
+                HttpStatus.NOT_FOUND);
+    }
+
+    /**
+     * При невалидной попытке забронировать место
+     */
+    @ExceptionHandler(InvalidTicketRequestException.class)
+    protected ResponseEntity<ExceptionResponse> handleNotFoundException(EntityNotFoundException ex) {
+        return new ResponseEntity<>(
+                new ExceptionResponse(HttpStatus.BAD_REQUEST.value(),
+                        ex.getMessage(),
                         ex.getMessage()),
                 HttpStatus.NOT_FOUND);
     }

@@ -4,8 +4,9 @@ package ru.kami.gis.afisha.schedule.api.common.types;
  * @author Daniil.Makarov
  */
 public enum EntityType {
-    SALE_STATUS("Статус продажи"),
-    SALE("Статус продажи");
+    CINEMA("Кинотеатр"),
+    PLACE("Кинотеатр"),
+    EVENT("Событие");
 
     private final String name;
 

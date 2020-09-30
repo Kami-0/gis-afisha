@@ -8,6 +8,7 @@ import ru.kami.gis.afisha.schedule.core.domain.PlaceEntity;
 import ru.kami.gis.afisha.schedule.core.repository.jdbc.api.PlaceDao;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author Daniil.Makarov
@@ -18,10 +19,11 @@ public class PlaceDaoImpl implements PlaceDao {
     private JdbcTemplate jdbcTemplate;
 
     @Override
-    public List<PlaceEntity> findAllPlacesByIdHall(Long id) {
-        return jdbcTemplate.query(
+    public Optional<List<PlaceEntity>> findAllPlacesByIdHall(Long id) {
+        List<PlaceEntity> query = jdbcTemplate.query(
                 "select * from public.places where hall_id = " + id,
                 new BeanPropertyRowMapper<>(PlaceEntity.class)
         );
+        return query.isEmpty() ? Optional.empty() : Optional.of(query);
     }
 }
