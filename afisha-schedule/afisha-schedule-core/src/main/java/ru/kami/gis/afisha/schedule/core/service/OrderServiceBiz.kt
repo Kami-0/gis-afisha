@@ -1,26 +1,23 @@
 package ru.kami.gis.afisha.schedule.core.service
 
-import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 import ru.kami.gis.afisha.schedule.api.common.exceptions.EntityNotFoundException
 import ru.kami.gis.afisha.schedule.api.common.exceptions.InvalidTicketRequestException
 import ru.kami.gis.afisha.schedule.api.common.types.EntityType
 import ru.kami.gis.afisha.schedule.core.domain.PlaceEntity
 import ru.kami.gis.afisha.schedule.core.domain.TicketEntity
-import ru.kami.gis.afisha.schedule.core.repository.jdbc.api.*
+import ru.kami.gis.afisha.schedule.core.repository.jdbc.api.EventDao
+import ru.kami.gis.afisha.schedule.core.repository.jdbc.api.PlaceDao
+import ru.kami.gis.afisha.schedule.core.repository.jdbc.api.TicketDao
 
 /**
  * @author Daniil.Makarov
  */
-@Service("orderService")
-open class OrderService(
-    private val cinemaDao: CinemaDao,
-    private val cinemaHallDao: CinemaHallDao,
+class OrderServiceBiz(
     private val eventDao: EventDao,
     private val placeDao: PlaceDao,
     private val ticketDao: TicketDao
 ) {
-
     @Transactional
     fun makeAnOrder(eventId: Long, placesId: List<Long>): List<TicketEntity>? {
         val hallId: Long = eventDao

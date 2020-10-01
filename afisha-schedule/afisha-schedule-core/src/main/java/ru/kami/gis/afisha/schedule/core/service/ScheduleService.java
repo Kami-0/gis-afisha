@@ -22,7 +22,6 @@ import java.util.stream.Collectors;
  */
 @Service
 public class ScheduleService {
-
     @Autowired
     private CinemaDao cinemaDao;
     @Autowired
