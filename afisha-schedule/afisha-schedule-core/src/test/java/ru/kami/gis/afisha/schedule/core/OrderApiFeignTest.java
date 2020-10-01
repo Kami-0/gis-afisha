@@ -4,17 +4,17 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import ru.kami.gis.afisha.schedule.api.dto.CinemaDto;
-import ru.kami.gis.afisha.schedule.api.dto.CinemaHallDto;
-import ru.kami.gis.afisha.schedule.api.dto.EventDto;
-import ru.kami.gis.afisha.schedule.api.dto.PlaceInfoDto;
-import ru.kami.gis.afisha.schedule.feign.ScheduleApiFeign;
+import ru.kami.gis.afisha.schedule.api.dto.PlacesOrderRequestDto;
+import ru.kami.gis.afisha.schedule.api.dto.TicketDto;
+import ru.kami.gis.afisha.schedule.feign.OrderApiFeign;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -26,49 +26,28 @@ import java.util.List;
 class OrderApiFeignTest {
 
     @Autowired
-    private ScheduleApiFeign scheduleClient;
+    private OrderApiFeign orderClient;
+    private PlacesOrderRequestDto requestDto;
     private Gson gson = new GsonBuilder()
             .setPrettyPrinting()
             .create();
 
+    @BeforeEach
+    void setUp() {
+        requestDto = PlacesOrderRequestDto.builder()
+                .eventId(1L)
+                .placesId(Arrays.asList(1L, 2L))
+                .build();
+    }
+
     /**
-     * Получение к события с id = 1
+     * Бронирование билетов
      */
     @Test
     void getEventById() {
-        EventDto event = scheduleClient.getEventById(1);
-        Assertions.assertNotNull(event);
-        log("GET /schedule/event/1", event);
-    }
-
-    /**
-     * Получение свободных/забронированных мест события с id = 1
-     */
-    @Test
-    void getAllPlacesByIdEvent() {
-        List<PlaceInfoDto> allPlacesByIdEvent = scheduleClient.getAllPlacesByIdEvent(1);
-        Assertions.assertNotNull(allPlacesByIdEvent);
-        log("GET /schedule/event/1/places", allPlacesByIdEvent);
-    }
-
-    /**
-     * Получить список всех кинотеатров
-     */
-    @Test
-    void getAllCinemas() {
-        List<CinemaDto> allCinemas = scheduleClient.getAllCinemas();
-        Assertions.assertNotNull(allCinemas);
-        log("GET /schedule/cinemas", allCinemas);
-    }
-
-    /**
-     * Получить список всех залов кинотеатра по id = 1
-     */
-    @Test
-    void getAllCinemaHallsById() {
-        List<CinemaHallDto> allCinemaHallsById = scheduleClient.getAllCinemaHallsById(1);
-        Assertions.assertNotNull(allCinemaHallsById);
-        log("GET /schedule/cinema/{id}/halls", allCinemaHallsById);
+        List<TicketDto> ticketDtos = orderClient.makeAnOrder(requestDto);
+        Assertions.assertNotNull(ticketDtos);
+        log("POST /order/places", ticketDtos);
     }
 
     private void log(String nameTest, Object actual) {

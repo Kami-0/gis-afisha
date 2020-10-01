@@ -1,5 +1,6 @@
 package ru.kami.gis.afisha.schedule.core.web.rest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,8 +22,8 @@ import java.util.stream.Collectors;
 @Validated
 @RequestMapping(value = "/order")
 public class OrderController implements OrderApi {
-
-    private OrderService orderService = new OrderService();
+    @Autowired
+    private OrderService orderService;
 
     /**
      * Забронировать места

@@ -16,11 +16,7 @@
     </parent>
 
     <modules>
-        <module>commons/commons-feign</module>
-        <module>commons</module>
         <module>afisha-schedule</module>
-        <module>afisha-order</module>
-        <module>composite-be</module>
     </modules>
 
     <properties>
