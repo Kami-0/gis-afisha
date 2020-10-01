@@ -48,6 +48,7 @@ class OrderApiFeignTest {
         List<TicketDto> ticketDtos = orderClient.makeAnOrder(requestDto);
         Assertions.assertNotNull(ticketDtos);
         log("POST /order/places", ticketDtos);
+        orderClient.removeAnOrder(requestDto);
     }
 
     private void log(String nameTest, Object actual) {

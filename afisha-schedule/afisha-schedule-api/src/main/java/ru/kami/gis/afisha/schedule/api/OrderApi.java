@@ -16,4 +16,11 @@ public interface OrderApi {
      * @return в случае успеха возращает экземляры забронированных мест
      */
     List<TicketDto> makeAnOrder(@Valid PlacesOrderRequestDto request);
+
+    /**
+     * Отменить бронь мест
+     *
+     * @return в случае успеха возращает экземляры забронированных мест
+     */
+    List<TicketDto> removeAnOrder(@Valid PlacesOrderRequestDto request);
 }

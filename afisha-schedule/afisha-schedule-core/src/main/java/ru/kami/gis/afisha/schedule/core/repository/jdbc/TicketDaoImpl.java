@@ -34,4 +34,15 @@ public class TicketDaoImpl implements TicketDao {
                 ticketEntity.getPlaceId(),
                 ticketEntity.isActs());
     }
+
+    @Override
+    public int cancelReservation(TicketEntity ticketEntity) {
+        return jdbcTemplate.update("update public.tickets set " +
+                        "is_acts = ? " +
+                        "where event_id = ? and place_id = ?",
+                ticketEntity.isActs(),
+                ticketEntity.getEventId(),
+                ticketEntity.getPlaceId()
+        );
+    }
 }

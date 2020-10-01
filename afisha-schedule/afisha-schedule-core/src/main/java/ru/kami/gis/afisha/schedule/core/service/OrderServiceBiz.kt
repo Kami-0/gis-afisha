@@ -42,4 +42,25 @@ class OrderServiceBiz(
 
         return ticketDao.findAllTicketsByIdEvent(eventId)
     }
+
+    @Transactional
+    fun removeAnOrder(eventId: Long, placesId: List<Long>): List<TicketEntity>? {
+        val hallId: Long = eventDao
+            .findEventById(eventId)
+            .get()
+            .hallId ?: throw EntityNotFoundException(EntityType.EVENT, eventId)
+
+        val occupiedPlaces = ticketDao
+            .findAllTicketsByIdEvent(eventId)
+            .orEmpty()
+            .filter { it.isActs }
+            .mapNotNull { it.placeId }
+
+        //Проверяем забронированы ли места для отмены
+        placesId.forEach { if (it !in occupiedPlaces) throw InvalidTicketRequestException(it, "не забранировано") }
+
+        placesId.map { ticketDao.cancelReservation(TicketEntity(null, eventId, it, false)) }
+
+        return ticketDao.findAllTicketsByIdEvent(eventId)
+    }
 }

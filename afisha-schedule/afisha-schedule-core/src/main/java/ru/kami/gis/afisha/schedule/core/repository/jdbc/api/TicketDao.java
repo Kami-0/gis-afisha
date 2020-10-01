@@ -12,4 +12,6 @@ public interface TicketDao extends JdbcDaoInterface {
     List<TicketEntity> findAllTicketsByIdEvent(Long eventId);
 
     int insert(TicketEntity ticketEntity);
+
+    int cancelReservation(TicketEntity ticketEntity);
 }

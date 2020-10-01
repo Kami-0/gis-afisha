@@ -24,5 +24,9 @@ public class OrderService {
     public List<TicketEntity> makeAnOrder(Long eventId, List<Long> placesId) {
         return new OrderServiceBiz(eventDao, placeDao, ticketDao).makeAnOrder(eventId, placesId);
     }
+
+    public List<TicketEntity> removeAnOrder(Long eventId, List<Long> placesId) {
+        return new OrderServiceBiz(eventDao, placeDao, ticketDao).removeAnOrder(eventId, placesId);
+    }
 }
 

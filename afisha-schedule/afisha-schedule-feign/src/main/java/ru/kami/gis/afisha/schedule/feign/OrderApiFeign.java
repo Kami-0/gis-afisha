@@ -16,4 +16,8 @@ public interface OrderApiFeign extends OrderApi {
     @RequestLine("POST /order/places")
     @Headers("Content-Type: application/json")
     List<TicketDto> makeAnOrder(@Valid PlacesOrderRequestDto request);
+
+    @RequestLine("POST /order/remove/places")
+    @Headers("Content-Type: application/json")
+    List<TicketDto> removeAnOrder(@Valid PlacesOrderRequestDto request);
 }

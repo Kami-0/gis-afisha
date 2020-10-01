@@ -39,4 +39,19 @@ public class OrderController implements OrderApi {
                 .map(DtoToEntityConverter::convert)
                 .collect(Collectors.toList());
     }
+
+    /**
+     * Отменить бронь мест
+     *
+     * @return в случае успеха возращает экземляры забронированных мест
+     */
+    @Override
+    @PostMapping(value = "/remove/places")
+    public List<TicketDto> removeAnOrder(@RequestBody PlacesOrderRequestDto request) {
+        return orderService
+                .removeAnOrder(request.getEventId(), request.getPlacesId())
+                .stream()
+                .map(DtoToEntityConverter::convert)
+                .collect(Collectors.toList());
+    }
 }
